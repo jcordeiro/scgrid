@@ -65,12 +65,18 @@ function fetchSoundCloudTracks() {
 
         // Get the artwork for each track if it isn't null
         if ($(this).find("artwork-url").attr("nil") != "true") {
-          $("#container").append("<span class='grid-span'><img class='grid-image' src='" + $(this).find("artwork-url").text() + "' /></span>");
+          $("#main-content").append("<img class='scgrid-image pure-u-1-3'  src='" + $(this).find("artwork-url").text() + "' />");
+
+          // $("#container").append("<span class='grid-span pure-u-1-20' '><img class='grid-image '  src='" + $(this).find("artwork-url").text() + "' /></span>");
+
         }
 
         // If the track artwork is null, get the track uploader's profile picture
         else {
-          $("#container").append("<span class='grid-span'><img class='grid-image' src='" + $(this).find("user").find("avatar-url").text() + "' /></span>");
+          $("#main-content").append("<img class='scgrid-image  pure-u-1-3' src='" + $(this).find("user").find("avatar-url").text() + "' />");
+
+          // $("#container").append("<span class='grid-span pure-u-1-20 '><img class='grid-image  ' src='" + $(this).find("user").find("avatar-url").text() + "' /></span>");
+
 
           // We'll have to check here if the uploader has no profile picture
           // in which case we'll probably just use a default image
