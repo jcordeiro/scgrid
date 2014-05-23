@@ -11,6 +11,9 @@ body {
 
   // background: green;
 
+  background: url('../img/squared_metal_@2X.png');
+  font-family: 'Droid Sans', sans-serif;
+  color: white;
 
   text-align: center;
 
@@ -26,17 +29,29 @@ body {
 
   border-bottom: 4px groove $sc-orange;
 
+  background: url('../img/navy_blue.png');
+
+
+}
+
+.title {
+  text-shadow: 0 0 5px $sc-orange;
+  font-size: 2.25em;
 }
 
 .footer {
   background: $footer-color;
 
+  background: url('../img/navy_blue.png');
 
 
-  position: absolute;
+
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   height: 60px;
-  bottom: 0;
 
   z-index: 999;
 
@@ -61,11 +76,12 @@ body {
 }
 
 .content {
-  // overflow-y: hidden;
+  overflow-y: none;
 
   margin: auto;
 
   margin-top: 84px;
+  margin-bottom: 64px;
   width: 90%;
 
   // padding-bottom: 64px;
@@ -108,5 +124,6 @@ body {
 }
 
 .hidden {
-  visibility: hidden;
+  // visibility: hidden;
+  display: none;
 }

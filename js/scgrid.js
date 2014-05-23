@@ -65,7 +65,7 @@ function fetchSoundCloudTracks() {
 
         // Get the artwork for each track if it isn't null
         if ($(this).find("artwork-url").attr("nil") != "true") {
-          $("#main-content").append("<img class='scgrid-image pure-u-1-3'  src='" + $(this).find("artwork-url").text() + "' />");
+          $("#main-content").append("<img class='scgrid-image'  src='" + $(this).find("artwork-url").text() + "' />");
 
           // $("#container").append("<span class='grid-span pure-u-1-20' '><img class='grid-image '  src='" + $(this).find("artwork-url").text() + "' /></span>");
 
@@ -73,7 +73,7 @@ function fetchSoundCloudTracks() {
 
         // If the track artwork is null, get the track uploader's profile picture
         else {
-          $("#main-content").append("<img class='scgrid-image  pure-u-1-3' src='" + $(this).find("user").find("avatar-url").text() + "' />");
+          $("#main-content").append("<img class='scgrid-image' src='" + $(this).find("user").find("avatar-url").text() + "' />");
 
           // $("#container").append("<span class='grid-span pure-u-1-20 '><img class='grid-image  ' src='" + $(this).find("user").find("avatar-url").text() + "' /></span>");
 
