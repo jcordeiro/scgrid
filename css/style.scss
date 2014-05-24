@@ -2,9 +2,11 @@ $sc-orange: #f50;
 $header-color: #4d4d4d;
 $footer-color: #4d4d4d;
 
-html {
+* {
   margin: 0;
-  padding: 0;
+}
+html, body {
+  height: 100%;
 }
 
 body {
@@ -40,48 +42,74 @@ body {
 }
 
 .footer {
-  background: $footer-color;
+  // background: $footer-color;
 
   background: url('../img/navy_blue.png');
 
 
 
 
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  // position: fixed;
+  // bottom: 0;
+  // left: 0;
   width: 100%;
-  height: 60px;
+  // height: 60px;
 
-  z-index: 999;
+  // z-index: 999;
 
 
   border-top: 4px groove $sc-orange;
 }
 
+.content {
+  min-height: 100%;
+
+// margin-top: 84px;
+
+margin: 84px auto -64px;
+
+  /* equal to footer height */
+  // margin-bottom: -64px;
+}
+.content:after {
+  content: "";
+  display: block;
+}
+.footer, .content:after {
+  /* .push must be the same height as footer */
+  height: 64px;
+}
+
 .page-centered {
-  position: relative;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+  position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      margin: auto;
+}
+
+iframe {
+  width: 80%;
+  height: 250px;
+  // height: 10%;
+  // width: 10%;
 }
 
 .player {
-  height: 10%;
-  width: 10%;
-
-  visibility: hidden;
+  width: 50%;
+  height: 200px;
+  position: fixed;
 }
 
 .content {
   overflow-y: none;
 
-  margin: auto;
+  // margin: auto;
 
-  margin-top: 84px;
-  margin-bottom: 64px;
+  // margin-top: 84px;
+  // margin-bottom: 64px;
   width: 90%;
 
   // padding-bottom: 64px;
@@ -121,6 +149,10 @@ body {
     box-shadow: 0px 0px 25px $sc-orange;
     cursor: pointer;
   }
+}
+
+.bottom-fixed {
+
 }
 
 .hidden {

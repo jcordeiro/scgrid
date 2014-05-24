@@ -1,6 +1,8 @@
-html {
-  margin: 0;
-  padding: 0; }
+* {
+  margin: 0; }
+
+html, body {
+  height: 100%; }
 
 body {
   background: url("../img/squared_metal_@2X.png");
@@ -22,34 +24,42 @@ body {
   font-size: 2.25em; }
 
 .footer {
-  background: #4d4d4d;
   background: url("../img/navy_blue.png");
-  position: fixed;
-  bottom: 0;
-  left: 0;
   width: 100%;
-  height: 60px;
-  z-index: 999;
   border-top: 4px groove #ff5500; }
 
+.content {
+  min-height: 100%;
+  margin: 84px auto -64px;
+  /* equal to footer height */ }
+
+.content:after {
+  content: "";
+  display: block; }
+
+.footer, .content:after {
+  /* .push must be the same height as footer */
+  height: 64px; }
+
 .page-centered {
-  position: relative;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   margin: auto; }
 
+iframe {
+  width: 80%;
+  height: 250px; }
+
 .player {
-  height: 10%;
-  width: 10%;
-  visibility: hidden; }
+  width: 50%;
+  height: 200px;
+  position: fixed; }
 
 .content {
   overflow-y: none;
-  margin: auto;
-  margin-top: 84px;
-  margin-bottom: 64px;
   width: 90%; }
 
 .grid-span {

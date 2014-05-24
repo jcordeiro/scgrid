@@ -17,24 +17,50 @@ $(document).ready(function() {
 
   console.log(SC);
 
+  fetchSoundCloudTracks();
 
-  SC.oEmbed("http://soundcloud.com/forss/flickermood", {auto_play: false}, function(oembed){
-     console.log("oEmbed response: ", oembed);
 
-     $("#track-player").append(oembed.html);
 
-   });
+  // SC.oEmbed("http://soundcloud.com/forss/flickermood", {auto_play: false}, function(oembed){
+  //    console.log("oEmbed response: ", oembed);
 
-  $(".grid-image").on("click", function(e) {
+  //    $("#track-player").append(oembed.html);
+
+   // });
+
+  $("#main-content").on("click", ".scgrid-image", function(e) {
 
     console.log("clicked!");
 
+    console.log(e);
+
+    console.log($(this));
+
+    var url = $(this).data("url");
+    console.log(url);
+
+    SC.oEmbed(url, {auto_play: false}, function(oembed){
+       console.log("oEmbed response: ", oembed);
+
+       $("#track-player").html(oembed.html);
+       $("#track-player").toggleClass("hidden");
+    });
+
   });
 
+  // $(".scgrid-image").click(function(e) {
+
+  //   console.log("clicked!");
+
+  //   console.log(e);
+
+  //   console.log($(this));
+
+  // });
 
 
 
-  fetchSoundCloudTracks();
+
 
 
 });
@@ -56,8 +82,7 @@ function fetchSoundCloudTracks() {
     beforeSend: function() {
       console.log("Fetching tracks...");
 
-      /* Show the loading thing */
-
+      /* Show ajax loader */
       $("#loader").toggleClass("hidden");
 
     },
@@ -68,9 +93,16 @@ function fetchSoundCloudTracks() {
 
       $(data).find("tracks").find("track").each(function() {
 
+        var a = $(this).find("permalink-url")[1];
+        console.log($(this).find(a).text());
+
         // Get the artwork for each track if it isn't null
         if ($(this).find("artwork-url").attr("nil") != "true") {
-          $("#main-content").append("<img class='scgrid-image'  src='" + $(this).find("artwork-url").text() + "' />");
+          $("#main-content").append("<img class='scgrid-image'  src='" +
+            $(this).find("artwork-url").text() +
+            // "' data-url='" + $(this).find("permalink-url")[1].text() +"' />");
+          "' data-url='" + $(this).find(a).text() +"' />");
+
 
           // $("#container").append("<span class='grid-span pure-u-1-20' '><img class='grid-image '  src='" + $(this).find("artwork-url").text() + "' /></span>");
 
@@ -78,7 +110,11 @@ function fetchSoundCloudTracks() {
 
         // If the track artwork is null, get the track uploader's profile picture
         else {
-          $("#main-content").append("<img class='scgrid-image' src='" + $(this).find("user").find("avatar-url").text() + "' />");
+          $("#main-content").append("<img class='scgrid-image' src='" +
+            $(this).find("user").find("avatar-url").text() +
+             // "' data-url='" + $(this).find("permalink-url"[1]).text() +"' />");
+          "' data-url='" + $(this).find(a).text() +"' />");
+
 
           // $("#container").append("<span class='grid-span pure-u-1-20 '><img class='grid-image  ' src='" + $(this).find("user").find("avatar-url").text() + "' /></span>");
 
@@ -96,9 +132,7 @@ function fetchSoundCloudTracks() {
 
     },
     complete: function() {
-
-
-      /* Hide the loader */
+      /* Hide ajax loader loader */
       $("#loader").toggleClass("hidden");
 
     },
