@@ -55,6 +55,11 @@ function fetchSoundCloudTracks() {
 
     beforeSend: function() {
       console.log("Fetching tracks...");
+
+      /* Show the loading thing */
+
+      $("#loader").toggleClass("hidden");
+
     },
 
     success: function(data) {
@@ -88,6 +93,13 @@ function fetchSoundCloudTracks() {
         }
 
       });
+
+    },
+    complete: function() {
+
+
+      /* Hide the loader */
+      $("#loader").toggleClass("hidden");
 
     },
 
