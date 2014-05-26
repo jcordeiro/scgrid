@@ -27,9 +27,7 @@
 
     <!-- SoundCloud JS SDK -->
     <script src="//connect.soundcloud.com/sdk.js"></script>
-    <script>
-
-    </script>
+    <script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 
   </head>
 
@@ -43,7 +41,9 @@
 
         <div id="main-content" class="content"></div>
 
-         <div id="track-player" class="page-centered player hidden"></div>
+         <div id="track-player" class="page-centered player hidden">
+            <iframe id="sc-widget" src="https://w.soundcloud.com/player/?url=http://api.soundcloud.com/users/1539950/favorites" width="100%" height="465" scrolling="no" frameborder="no"></iframe>
+         </div>
 
          <div id="loader" class="page-centered hidden">
             <img src="/img/ajax-loader.gif" alt="Loading..." class="page-centered" />
