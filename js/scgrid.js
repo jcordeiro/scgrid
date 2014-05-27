@@ -1,5 +1,6 @@
 var CLIENT_ID = "3bd54dc3bb72fedf2fbb3e415b8ba1bb";
 var SC_BASE_URL = "https://api.soundcloud.com";
+var DEFAULT_AVATAR_URL = "https://a1.sndcdn.com/images/default_avatar_large.png?30a2558";
 
 $(document).ready(function() {
 
@@ -108,16 +109,16 @@ function fetchSoundCloudTracks() {
 
         // If the track artwork is null, get the track uploader's profile picture
         else {
+          image_source = $(this).find("avatar-url").text();
 
-          // Check that the uploader's profile picture isn't null
-          if ($(this).find("avatar-url").attr("nil") != "true") {
-            image_source = $(this).find("avatar-url").text();
-          }
-          else {
-            // If the uploader has not profile picture we'll just use
-            // a default image of the SoundCloud Logo
-            image_source = "/img/sclogo.png";
-          }
+            // Check that the uploader's profile picture isn't SoundCloud's default
+            if (image_source === DEFAULT_AVATAR_URL) {
+
+              // If the uploader's profile picture is the default
+              // we'll use the SoundCloud logo instead
+              // at least it looks a little nicer!
+              image_source = "/img/sclogo.png";
+            }
         }
 
         // Add the image to the grid
