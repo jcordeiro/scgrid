@@ -4,6 +4,12 @@ var DEFAULT_AVATAR_URL = "https://a1.sndcdn.com/images/default_avatar_large.png?
 
 $(document).ready(function() {
 
+  //Clicking the title in the header will fetch the tracks from SoundClouad again
+  $('.title').click(function() {
+    $("#main-content").empty();
+    fetchSoundCloudTracks();
+  });
+
   // Pauses and fades out the SoundCloud player widget
   // when the user clicks anywhere else besides the player on the page
   $(document).mouseup(function (e) {
@@ -53,7 +59,6 @@ $(document).ready(function() {
   // Fetch the tracks from SoundCloud
   fetchSoundCloudTracks();
 
-
   $("#main-content").on("click", ".scgrid-image", function(e) {
 
     var url = $(this).data("url");
@@ -94,7 +99,6 @@ function fetchSoundCloudTracks() {
 
     success: function(data) {
       console.log("Tracks fetched!");
-      console.log(data);
 
       $(data).find("tracks").find("track").each(function() {
 
@@ -122,24 +126,26 @@ function fetchSoundCloudTracks() {
         }
 
         // Add the image to the grid
-        $("#main-content").append("<img class='scgrid-image' src='" +
+        $("#main-content").append("<img class='scgrid-image hidden' src='" +
         image_source +
         "' data-url='" + $(this).find(url).text() +"' />");
       });
 
+      $('.scgrid-image').load(function() {
+
+        $(this).fadeIn('slow');
+      });
     },
     complete: function() {
       /* Hide ajax loader loader */
       $("#loader").toggleClass("hidden");
 
-
       // Some images from SoundCloud give a 403 (Forbidden) error
-      // So We replace the broken images with the SoundCloud logo
+      // So we replace the broken images with the SoundCloud logo
       $("img").error(function(){
           $(this).attr("src", "/img/sclogo.png");
           console.log("Fixed broken image for: " + $(this));
         });
-
     },
 
     error: function(jqXHR, textStatus, errorThrown) {

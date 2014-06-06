@@ -14,7 +14,7 @@ html, body {
 
 body {
   background: url('../img/squared_metal_@2X.png');
-  font-family: 'Droid Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   text-align: center;
 }
@@ -51,6 +51,11 @@ iframe {
 .title {
   text-shadow: 0 0 5px $sc-orange;
   font-size: 2.25em;
+
+  &:hover {
+    color: lighten($sc-orange, 20%);
+    cursor: pointer;
+  }
 }
 
 /*** Content styles ***/
@@ -97,6 +102,10 @@ iframe {
   height: 64px;
   border-top: 4px groove $sc-orange;
   line-height: 64px;
+
+  position: fixed;
+  bottom: 0;
+
 }
 
 .footer p {
@@ -112,7 +121,6 @@ iframe {
 }
 
 .footer a:hover {
-  color: white;
   border-bottom: none;
   color: lighten($sc-orange, 20%);
 }
