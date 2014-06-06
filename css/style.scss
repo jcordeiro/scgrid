@@ -51,6 +51,8 @@ iframe {
 .title {
   text-shadow: 0 0 5px $sc-orange;
   font-size: 2.25em;
+  display: inline-block;
+
 
   &:hover {
     color: lighten($sc-orange, 20%);

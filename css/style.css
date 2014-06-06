@@ -37,7 +37,8 @@ iframe {
 
 .title {
   text-shadow: 0 0 5px #ff5500;
-  font-size: 2.25em; }
+  font-size: 2.25em;
+  display: inline-block; }
   .title:hover {
     color: #ff9966;
     cursor: pointer; }
