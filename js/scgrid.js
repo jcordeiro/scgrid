@@ -131,6 +131,15 @@ function fetchSoundCloudTracks() {
     complete: function() {
       /* Hide ajax loader loader */
       $("#loader").toggleClass("hidden");
+
+
+      // Some images from SoundCloud give a 403 (Forbidden) error
+      // So We replace the broken images with the SoundCloud logo
+      $("img").error(function(){
+          $(this).attr("src", "/img/sclogo.png");
+          console.log("Fixed broken image for: " + $(this));
+        });
+
     },
 
     error: function(jqXHR, textStatus, errorThrown) {
