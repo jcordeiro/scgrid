@@ -121,7 +121,7 @@ function fetchSoundCloudTracks() {
               // If the uploader's profile picture is the default
               // we'll use the SoundCloud logo instead
               // at least it looks a little nicer!
-              image_source = "/img/sclogo.png";
+              image_source = "img/sclogo.png";
             }
         }
 
@@ -143,7 +143,7 @@ function fetchSoundCloudTracks() {
       // Some images from SoundCloud give a 403 (Forbidden) error
       // So we replace the broken images with the SoundCloud logo
       $("img").error(function(){
-          $(this).attr("src", "/img/sclogo.png");
+          $(this).attr("src", "img/sclogo.png");
           console.log("Fixed broken image for: " + $(this));
         });
     },
