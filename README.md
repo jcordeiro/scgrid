@@ -1,6 +1,8 @@
 SoundCloud Grid
 ======
 
+[Check it out here](http://www.joncordeiro.com/projects/scgrid)
+
 Pulls in a grid of the 200 newest and hottest tracks from SoundCloud
 
 ![screenshot of grid](/img/screenshot.png)
